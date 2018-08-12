@@ -1,14 +1,17 @@
 
-# @desc This class offers the means to get an n by m 
-# into a sort of reduced row echelon form for the purpose 
+# @desc This class offers the means to get an n by m
+# into a sort of reduced row echelon form for the purpose
 # of balancing a chemical eqution.
 # @author Cramer Grimes cramergrimes@gmail.com
 
 class rowEchelon:
 	@staticmethod
 	def showMatrix(A):
+		stringList = []
 		for i in range(0,len(A)):
-			print A[i]
+			stringList.append(str(A[i]))
+			stringList.append("\n")
+		return ''.join(stringList)
 
 	@staticmethod
 	def swapRow(A,i1,i2):
@@ -24,7 +27,7 @@ class rowEchelon:
 					if (i!=blastInfo['i']):
 						rowEchelon.swapRow(A,i,blastInfo['i'])
 					blastInfo['j']=j
-					return 
+					return
 		blastInfo['endOfLine']=True
 		return
 
@@ -156,13 +159,13 @@ class rowEchelon:
 						numeratorBar[j] = A[i][jFreedom]*(-1)
 						denominatorBar[j] = A[i][j]
 						break
-		
+
 		multiplier = rowEchelon.lCMbar(denominatorBar)
-		
+
 		for i in range(0,jMax):
 			if (denominatorBar[i]!=0):
 				numeratorBar[i] = numeratorBar[i]*(multiplier/denominatorBar[i])
-		
+
 		numeratorBar[jFreedom] = multiplier
 		return numeratorBar
 
